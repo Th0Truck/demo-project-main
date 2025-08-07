@@ -21,6 +21,11 @@ class PaymentDto
         $this->amount = $amount;
     }
 
+    /**
+     * Converts the PaymentDto to a response array.
+     * 
+     * @return array
+     */
     public function toResponse(): array {
         return [
             'payment_id' => $this->paymentId,
@@ -30,6 +35,9 @@ class PaymentDto
         ];
     }
 
+    /**
+     * Getters and Setters
+     */
     public function getPaymentId(): ?string
     {
         return $this->paymentId;

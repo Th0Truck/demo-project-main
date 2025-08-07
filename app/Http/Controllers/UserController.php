@@ -16,6 +16,10 @@ class UserController extends BaseController
     ) {}
 
     /**
+     * Adds a new user with the provided details and creates an account for them.
+     * @param Request $request
+     * 
+     * @return JsonResponse
      * @throws Exception
      */
     public function addUser(Request $request): JsonResponse

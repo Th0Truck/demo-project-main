@@ -16,6 +16,11 @@ class MerchantDto
         $this->name = $name;
     }
 
+    /**
+     * Converts the MerchantDto to a response array.
+     * 
+     * @return array
+     */
     public function toResponse(): array {
         return [
             'merchant_id' => $this->merchantId,
@@ -23,6 +28,9 @@ class MerchantDto
         ];
     }
 
+    /**
+     * Getters and Setters
+     */
     public function getMerchantId(): ?string
     {
         return $this->merchantId;

@@ -17,6 +17,10 @@ class PaymentController extends BaseController
     ) {}
 
     /**
+     * Adds a new payment for a user to a merchant.
+     * @param Request $request
+     * 
+     * @return JsonResponse
      * @throws Exception
      */
     public function addPayment(Request $request): JsonResponse

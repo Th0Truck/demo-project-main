@@ -18,6 +18,11 @@ class UserDto
         $this->email = $email;
     }
 
+    /**
+     * Converts the UserDto to a response array.
+     * 
+     * @return array
+     */
     public function toResponse(): array {
         return [
             'userId' => $this->userId,
@@ -26,6 +31,9 @@ class UserDto
         ];
     }
 
+    /**
+     * Getters and Setters
+     */
     public function getUserId(): ?string
     {
         return $this->userId;

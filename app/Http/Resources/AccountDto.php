@@ -20,6 +20,11 @@ class AccountDto
         $this->balance = $balance;
     }
 
+    /**
+     * Converts the AccountDto to a response array.
+     * 
+     * @return array
+     */
     public function toResponse(): array {
         return [
             'account_id' => $this->accountId,
@@ -28,6 +33,9 @@ class AccountDto
         ];
     }
 
+    /**
+     * Getters and Setters
+     */
     public function getAccountId(): string
     {
         return $this->accountId;

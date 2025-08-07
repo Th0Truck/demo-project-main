@@ -10,10 +10,17 @@ use Symfony\Component\HttpFoundation\InputBag;
 
 class MerchantController extends BaseController
 {
+
     public function __construct(
         private readonly MerchantService $merchantService,
     ){}
 
+    /**
+     * Adds a new merchant with the provided name.
+     * 
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function addMerchant(Request $request): JsonResponse
     {
         /** @var InputBag $req */
