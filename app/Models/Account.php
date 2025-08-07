@@ -42,15 +42,23 @@ class Account extends Model
     public $timestamps = false;
 
     /**
+     * Increases the balance of the account by the specified amount.
      * 
+     * @param float $amount
      */
-    public function getIncreaseBalance(float $amount): void
+    public function increaseBalance(float $amount): void
     {
         $currentBalance = $this->balance;
         $this->balance = $currentBalance + $amount;
         $this->save();
     }
 
+    /**
+     * Decreases the balance of the account by the specified amount.
+     * 
+     * @param float $amount
+     * @throws Exception
+     */
     public function decreaseBalance(float $amount): void
     {
         $currentBalance = $this->balance;
