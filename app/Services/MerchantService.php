@@ -9,7 +9,27 @@ use Ramsey\Uuid\Uuid;
 
 readonly class MerchantService
 {
+
+    /**
+     * Constructs a new MerchantService instance.
+     * @param UserService $userService
+     * @param AccountService $accountService
+     * 
+     * @return MerchantDto
+     */
     public function addMerchant(string $name): MerchantDto {
+        $merchant = $this->createMerchant($name);
+
+        return $this->merchantToMerchantDto($merchant);
+    }
+
+    /**
+     * Creates a new merchant with the given name.
+     * 
+     * @return Merchant
+     * @throws Exception
+     */
+    private function createMerchant(string $name): Merchant {
         $merchant = new Merchant([
             'merchantId' => Uuid::uuid4(),
             'name' => $name,
@@ -17,9 +37,14 @@ readonly class MerchantService
 
         $merchant->save();
 
-        return $this->merchantToMerchantDto($merchant);
+        return $merchant;
     }
 
+    /**
+     * Retrieves a merchant by their ID and maps it to a MerchantDto.
+     * 
+     * @throws Exception
+     */
     public function getMerchant(string $merchantId): MerchantDto {
         $merchant = Merchant::query()->where('merchantId', $merchantId)->first();
 
@@ -30,7 +55,13 @@ readonly class MerchantService
         return $this->merchantToMerchantDto($merchant);
     }
 
-    public function merchantToMerchantDto(Merchant $merchant): MerchantDto {
+    /**
+     * Maps a Merchant model to a MerchantDto.
+     * 
+     * @return MerchantDto
+     */
+    private function merchantToMerchantDto(Merchant $merchant): MerchantDto {
         return new MerchantDto($merchant->merchantId, $merchant->name);
     }
 }
+

@@ -19,6 +19,10 @@ readonly class PaymentService
     ) {}
 
     /**
+     * Adds a new payment for a user to a merchant.
+     * @param PaymentDto $paymentDto
+     * 
+     * @return PaymentDto
      * @throws Exception
      */
     public function addPayment(PaymentDto $paymentDto): PaymentDto {
@@ -37,6 +41,13 @@ readonly class PaymentService
         return $this->paymentToPaymentDto($payment);
     }
 
+    /**
+     * Converts a Payment model to a PaymentDto.
+     * @param Payment $payment
+     * 
+     * @return PaymentDto
+     * @throws Exception
+     */
     private function paymentToPaymentDto(Payment $payment): PaymentDto {
         return new PaymentDto(
             $payment->paymentId,
@@ -46,6 +57,14 @@ readonly class PaymentService
         );
     }
 
+    /**
+     * Converts a PaymentDto to a Payment model.
+     * @param PaymentDto $paymentDto
+     * @param UserDto $userDto
+     * @param MerchantDto $merchantDto
+     * 
+     * @return Payment
+     */
     private function toPayment(
         PaymentDto $paymentDto,
         UserDto $userDto,

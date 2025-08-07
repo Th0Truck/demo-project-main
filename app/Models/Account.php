@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 use Illuminate\Support\Carbon;
 
 /**
@@ -39,4 +40,24 @@ class Account extends Model
     public $incrementing = true;
 
     public $timestamps = false;
+
+    /**
+     * 
+     */
+    public function getIncreaseBalance(float $amount): void
+    {
+        $currentBalance = $this->balance;
+        $this->balance = $currentBalance + $amount;
+        $this->save();
+    }
+
+    public function decreaseBalance(float $amount): void
+    {
+        $currentBalance = $this->balance;
+        if ($currentBalance < $amount) {
+            throw new Exception("Insufficient funds");
+        }
+        $this->balance = $currentBalance - $amount;
+        $this->save();
+    }
 }
