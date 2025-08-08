@@ -30,8 +30,8 @@ class PaymentController extends BaseController
 
         $paymentDto = new PaymentDto(
             null,
-            $req->getString('user_id'),
-            $req->getString('merchant_id'),
+            $req->getString('userId'),
+            $req->getString('merchantId'),
             floatval($req->getString('amount')),
         );
 
