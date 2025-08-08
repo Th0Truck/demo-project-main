@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('paymentId')->unique();
-            $table->string('userId')->unique();
-            $table->string('merchantId')->unique();
+            $table->string('userId');
+            $table->string('merchantId');
             $table->float('amount');
         });
     }
